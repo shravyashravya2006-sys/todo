@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-fontsize="medium">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectiSphere | Demystifying the Election Process</title>
+    <meta name="description"
+        content="An interactive civic platform to help you understand election stages, voting procedures, electoral mechanics, practice simulated voting, and build your voting plan.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="site-header" id="site-header">
+        <div class="container header-content">
+            <a href="#hero" class="brand-logo" id="brand-logo-link">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m9 12 2 2 4-4"></path>
+                        <path d="M5 7 3 9l9 9 9-9-2-2"></path>
+                        <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-name">Electi<span class="highlight">Sphere</span></span>
+                    <span class="brand-tagline">Democracy Explained</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li><a href="#lifecycle-section" class="nav-link">Stages & Timeline</a></li>
+                    <li><a href="#votesim-section" class="nav-link">VoteSim Studio</a></li>
+                    <li><a href="#voting-plan-section" class="nav-link">My Voting Plan</a></li>
+                    <li><a href="#mechanics-section" class="nav-link">Electoral System</a></li>
+                    <li><a href="#quiz-section" class="nav-link">Myth vs Fact</a></li>
+                    <li><a href="#glossary-section" class="nav-link">Civic Glossary</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <!-- Search Button -->
+                <button class="icon-btn" id="open-search-btn" title="Search Election Info (Ctrl+K)" aria-label="Search">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- Accessibility Menu -->
+                <div class="accessibility-dropdown-wrapper">
+                    <button class="icon-btn" id="access-btn" title="Accessibility Controls"
+                        aria-label="Accessibility Settings">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                            <path d="M12 12v7"></path>
+                            <path d="M8 14h8"></path>
+                        </svg>
+                    </button>
+
+                    <div class="access-dropdown" id="access-dropdown">
+                        <div class="access-group">
+                            <span class="access-label">Appearance</span>
+                            <div class="theme-buttons">
+                                <button class="theme-option active" data-theme-val="dark"
+                                    id="theme-dark-btn">Dark</button>
+                                <button class="theme-option" data-theme-val="light" id="theme-light-btn">Light</button>
+                                <button class="theme-option" data-theme-val="contrast" id="theme-contrast-btn">High
+                                    Contrast</button>
+                            </div>
+                        </div>
+                        <div class="access-group">
+                            <span class="access-label">Text Size</span>
+                            <div class="font-buttons">
+                                <button class="font-option" data-size="small" id="font-sm-btn">A-</button>
+                                <button class="font-option active" data-size="medium" id="font-md-btn">A</button>
+                                <button class="font-option" data-size="large" id="font-lg-btn">A+</button>
+                            </div>
+                        </div>
+                        <div class="access-group">
+                            <span class="access-label">Language Terms</span>
+                            <select id="lang-select" class="access-select">
+                                <option value="en">English (US)</option>
+                                <option value="es">Español (Terms)</option>
+                                <option value="fr">Français (Terms)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#voting-plan-section" class="btn btn-primary btn-sm">Build Voting Plan</a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="badge hero-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Interactive Civic Learning Platform</span>
+                </div>
+                <h1 class="hero-title">
+                    Understand Every Stage of the <span class="text-gradient">Election Process</span>
+                </h1>
+                <p class="hero-description">
+                    Democracy works best when everyone understands how it operates. Explore the complete election
+                    lifecycle, test a simulated ballot machine, debunk common voting myths, and build your personalized
+                    voter plan.
+                </p>
+
+                <!-- Persona Quick Selector -->
+                <div class="persona-selector">
+                    <span class="persona-label">Who are you? Tailor your guide:</span>
+                    <div class="persona-chips" id="persona-chips">
+                        <button class="persona-chip active" data-persona="first-time" id="persona-first-time">
+                            <span class="chip-icon">🎓</span> First-Time Voter
+                        </button>
+                        <button class="persona-chip" data-persona="mail-in" id="persona-mail-in">
+                            <span class="chip-icon">📬</span> Mail / Absentee
+                        </button>
+                        <button class="persona-chip" data-persona="in-person" id="persona-in-person">
+                            <span class="chip-icon">🗳️</span> In-Person Voter
+                        </button>
+                        <button class="persona-chip" data-persona="curious" id="persona-curious">
+                            <span class="chip-icon">🌍</span> Global Observer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Persona Dynamic Tip Banner -->
+                <div class="persona-tip-card" id="persona-tip-card">
+                    <div class="tip-icon">💡</div>
+                    <div class="tip-text" id="persona-tip-text">
+                        <strong>First-Time Voter Recommendation:</strong> Start with Phase 1 (Voter Registration) to
+                        verify deadlines and required ID, then test our <strong>VoteSim Studio</strong> to feel
+                        confident on voting day!
+                    </div>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="#lifecycle-section" class="btn btn-primary btn-lg">Explore Election Stages &rarr;</a>
+                    <a href="#votesim-section" class="btn btn-secondary btn-lg">Try Polling Simulator</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <!-- Interactive Stage Pulse Wheel / Dashboard Preview -->
+                <div class="hero-dashboard-card glass-panel">
+                    <div class="dash-header">
+                        <div class="dash-title">
+                            <span class="dash-dot"></span> Election Cycle Status Dashboard
+                        </div>
+                        <span class="dash-badge">Active Cycle</span>
+                    </div>
+
+                    <div class="cycle-progress-widget">
+                        <div class="cycle-track">
+                            <div class="cycle-bar" id="cycle-progress-bar" style="width: 50%;"></div>
+                        </div>
+                        <div class="cycle-steps-labels">
+                            <span class="active">1. Registration</span>
+                            <span class="active">2. Primaries</span>
+                            <span class="active current">3. Campaign</span>
+                            <span>4. Voting Day</span>
+                            <span>5. Counting</span>
+                            <span>6. Certification</span>
+                        </div>
+                    </div>
+
+                    <div class="quick-stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-num">6</span>
+                            <span class="stat-label">Core Lifecycle Phases</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-label">Secret & Audited Ballot</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">50+</span>
+                            <span class="stat-label">State / Regional Rules</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">270</span>
+                            <span class="stat-label">Electoral Victory Goal</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-widget-footer">
+                        <span class="widget-sub">Current Focus: <strong>General Election Campaigning &
+                                Debates</strong></span>
+                        <a href="#lifecycle-section" class="link-arrow">Jump to Phase &darr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: The 6-Stage Election Lifecycle -->
+    <section class="section-padding lifecycle-section" id="lifecycle-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Comprehensive Roadmap</div>
+                <h2 class="section-title">The 6 Stages of an Election</h2>
+                <p class="section-subtitle">
+                    An election is not just one day—it is a structured, months-long process built on checks, balances,
+                    transparency, and public participation. Click any stage to explore details and voter actions.
+                </p>
+            </div>
+
+            <!-- Stage Stepper Tabs -->
+            <div class="stepper-tabs" id="stage-stepper-tabs" role="tablist">
+                <button class="step-tab active" data-stage="1" id="tab-stage-1" role="tab">
+                    <span class="step-num">01</span>
+                    <span class="step-info">
+                        <span class="step-name">Registration</span>
+                        <span class="step-timing">Pre-Election</span>
+                    </span>
+                </button>
+                <button class="step-tab" data-stage="2" id="tab-stage-2" role="tab">
+                    <span class="step-num">02</span>
+                    <span class="step-info">
+                        <span class="step-name">Primaries & Caucuses</span>
+                        <span class="step-timing">6-9 Months Before</span>
+                    </span>
+                </button>
+                <button class="step-tab" data-stage="3" id="tab-stage-3" role="tab">
+                    <span class="step-num">03</span>
+                    <span class="step-info">
+                        <span class="step-name">General Campaign</span>
+                        <span class="step-timing">3-6 Months Before</span>
+                    </span>
+                </button>
+                <button class="step-tab" data-stage="4" id="tab-stage-4" role="tab">
+                    <span class="step-num">04</span>
+                    <span class="step-info">
+                        <span class="step-name">Voting Period</span>
+                        <span class="step-timing">Early & Election Day</span>
+                    </span>
+                </button>
+                <button class="step-tab" data-stage="5" id="tab-stage-5" role="tab">
+                    <span class="step-num">05</span>
+                    <span class="step-info">
+                        <span class="step-name">Tabulation & Audits</span>
+                        <span class="step-timing">Election Night + 10 Days</span>
+                    </span>
+                </button>
+                <button class="step-tab" data-stage="6" id="tab-stage-6" role="tab">
+                    <span class="step-num">06</span>
+                    <span class="step-info">
+                        <span class="step-name">Certification</span>
+                        <span class="step-timing">Final Validation</span>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Stage Detail Content Display -->
+            <div class="stage-detail-container glass-panel" id="stage-detail-display">
+                <!-- Content dynamically populated by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: VoteSim - Interactive Polling Booth & Voting Simulator -->
+    <section class="section-padding votesim-section" id="votesim-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge badge-accent">Interactive Studio</div>
+                <h2 class="section-title">VoteSim: Practice Polling Booth Experience</h2>
+                <p class="section-subtitle">
+                    Ever wondered what actually happens inside a polling place? Practice marking a sample ballot, learn
+                    how optical scanners verify paper votes, and experience election privacy features step-by-step.
+                </p>
+            </div>
+
+            <div class="votesim-app glass-panel" id="votesim-app">
+                <!-- VoteSim Progress Header -->
+                <div class="votesim-nav-header">
+                    <div class="sim-step-indicator active" id="sim-step-ind-1">
+                        <span class="ind-num">1</span> Check-In & ID
+                    </div>
+                    <div class="sim-step-line"></div>
+                    <div class="sim-step-indicator" id="sim-step-ind-2">
+                        <span class="ind-num">2</span> Mark Sample Ballot
+                    </div>
+                    <div class="sim-step-line"></div>
+                    <div class="sim-step-indicator" id="sim-step-ind-3">
+                        <span class="ind-num">3</span> Cast & Scan Ballot
+                    </div>
+                    <div class="sim-step-line"></div>
+                    <div class="sim-step-indicator" id="sim-step-ind-4">
+                        <span class="ind-num">4</span> Verification Receipt
+                    </div>
+                </div>
+
+                <!-- VoteSim Screens -->
+                <div class="votesim-screen-body">
+
+                    <!-- Step 1: Check-in -->
+                    <div class="sim-screen active" id="sim-screen-1">
+                        <div class="sim-grid">
+                            <div class="sim-info-col">
+                                <h3>Step 1: Poll Station Check-In</h3>
+                                <p>When you arrive at your designated polling location, poll workers check your name
+                                    against the official voter registration list.</p>
+                                <div class="civic-tip-box">
+                                    <strong><span class="tip-icon">🛡️</span> Security & Rights Note:</strong>
+                                    If your name does not appear on the roster but you believe you are registered, you
+                                    have the right to request a <strong>Provisional Ballot</strong>, which is counted
+                                    once your eligibility is confirmed.
+                                </div>
+                            </div>
+
+                            <div class="sim-interactive-col">
+                                <div class="poll-worker-booth">
+                                    <div class="booth-header">
+                                        <span class="poll-badge">Poll Station Desk #4</span>
+                                        <span class="status-online">● Clerk Ready</span>
+                                    </div>
+                                    <form id="sim-checkin-form" onsubmit="return false;">
+                                        <div class="form-group">
+                                            <label for="sim-name">Voter Full Name (Practice):</label>
+                                            <input type="text" id="sim-name" class="form-control" value="Jane Reader"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sim-id-type">Select Mock Verification ID:</label>
+                                            <select id="sim-id-type" class="form-control">
+                                                <option value="driver">State Driver's License / ID</option>
+                                                <option value="passport">US Passport</option>
+                                                <option value="student">Student College ID</option>
+                                                <option value="utility">Utility Bill with Address (Non-Photo State Rule)
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-block" id="sim-checkin-btn">
+                                            Verify & Issue Official Paper Ballot &rarr;
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Marking Ballot -->
+                    <div class="sim-screen" id="sim-screen-2">
+                        <div class="sim-ballot-wrapper">
+                            <div class="ballot-paper-header">
+                                <div class="ballot-watermark">OFFICIAL SAMPLE BALLOT</div>
+                                <h2>General Civic Election 2026</h2>
+                                <p class="ballot-sub">Completely fill in the oval next to your chosen candidate or
+                                    measure.</p>
+                            </div>
+
+                            <form id="sim-ballot-form" onsubmit="return false;">
+                                <!-- Office 1 -->
+                                <div class="ballot-contest">
+                                    <div class="contest-title">
+                                        <span>Office 1: Mayor / Chief Executive</span>
+                                        <span class="vote-limit">(Vote for ONE)</span>
+                                    </div>
+                                    <div class="contest-options">
+                                        <label class="ballot-option">
+                                            <input type="radio" name="mayor"
+                                                value="Elena Vance (Civic Innovation Party)">
+                                            <span class="oval"></span>
+                                            <span class="candidate-info">
+                                                <strong>Elena Vance</strong> — Civic Innovation Party
+                                                <small>Platform: Digital Infrastructure, Public Transit, Sustainable
+                                                    Energy</small>
+                                            </span>
+                                        </label>
+                                        <label class="ballot-option">
+                                            <input type="radio" name="mayor"
+                                                value="Marcus Sterling (Unity & Progress Alliance)">
+                                            <span class="oval"></span>
+                                            <span class="candidate-info">
+                                                <strong>Marcus Sterling</strong> — Unity & Progress Alliance
+                                                <small>Platform: Neighborhood Safety, Small Business Grants, Fiscal
+                                                    Budget</small>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Office 2 -->
+                                <div class="ballot-contest">
+                                    <div class="contest-title">
+                                        <span>Office 2: District Representative</span>
+                                        <span class="vote-limit">(Vote for ONE)</span>
+                                    </div>
+                                    <div class="contest-options">
+                                        <label class="ballot-option">
+                                            <input type="radio" name="rep" value="Aisha Khan (Independent Reform)">
+                                            <span class="oval"></span>
+                                            <span class="candidate-info">
+                                                <strong>Aisha Khan</strong> — Independent Reform
+                                                <small>Platform: Education Funding, Housing Accessibility</small>
+                                            </span>
+                                        </label>
+                                        <label class="ballot-option">
+                                            <input type="radio" name="rep"
+                                                value="David Miller (Traditional Forward Party)">
+                                            <span class="oval"></span>
+                                            <span class="candidate-info">
+                                                <strong>David Miller</strong> — Traditional Forward Party
+                                                <small>Platform: Tax Relief, Community Center Revitalization</small>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Measure 1 -->
+                                <div class="ballot-contest">
+                                    <div class="contest-title">
+                                        <span>Civic Proposition A: Community Green Parks Fund</span>
+                                        <span class="vote-limit">Shall the city issue $15M in bonds for park
+                                            maintenance?</span>
+                                    </div>
+                                    <div class="contest-options inline-options">
+                                        <label class="ballot-option">
+                                            <input type="radio" name="propA" value="YES on Proposition A">
+                                            <span class="oval"></span>
+                                            <span><strong>YES</strong> (In Favor)</span>
+                                        </label>
+                                        <label class="ballot-option">
+                                            <input type="radio" name="propA" value="NO on Proposition A">
+                                            <span class="oval"></span>
+                                            <span><strong>NO</strong> (Against)</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="ballot-actions">
+                                    <button type="button" class="btn btn-secondary" id="sim-back-to-1">&larr;
+                                        Back</button>
+                                    <button type="button" class="btn btn-primary" id="sim-proceed-to-3">Review & Insert
+                                        into Optical Scanner &rarr;</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Tabulator & Scanner Animation -->
+                    <div class="sim-screen" id="sim-screen-3">
+                        <div class="scanner-booth-view">
+                            <h3>Step 3: Casting Your Ballot into the Tabulator</h3>
+                            <p>In modern paper-based elections, your marked paper ballot is inserted into an offline,
+                                digital optical scanner tabulator. It records the vote while dropping the physical paper
+                                into a locked ballot box underneath for audits.</p>
+
+                            <div class="optical-scanner-mockup">
+                                <div class="scanner-top">
+                                    <div class="scanner-screen-display" id="scanner-status-text">
+                                        <div class="scan-pulse"></div>
+                                        <span>READY TO ACCEPT BALLOT...</span>
+                                    </div>
+                                </div>
+                                <div class="scanner-slot-area">
+                                    <div class="slot-arrow">&darr; Insert Paper Ballot Here &darr;</div>
+                                    <div class="scanner-slot" id="scanner-slot">
+                                        <div class="simulated-paper-feed" id="paper-feed-element">
+                                            <div class="feed-header">MARKINGS DETECTED</div>
+                                            <div class="feed-check">✓ Confidential Scan</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="scanner-base">
+                                    <span class="lock-indicator">🔒 Locked Secure Storage Box Below</span>
+                                </div>
+                            </div>
+
+                            <div class="scanner-controls">
+                                <button type="button" class="btn btn-accent btn-lg" id="start-scan-btn">
+                                    ⚡ Feed Ballot into Scanner Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Verification Receipt & Safeguards Explainer -->
+                    <div class="sim-screen" id="sim-screen-4">
+                        <div class="sim-grid">
+                            <div class="sim-info-col">
+                                <div class="success-badge-large">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5">
+                                        <path d="m5 12 5 5L20 7"></path>
+                                    </svg>
+                                </div>
+                                <h3>Ballot Successfully Recorded!</h3>
+                                <p>You have experienced the complete voting loop. Here is what happened behind the
+                                    scenes to keep your vote safe:</p>
+
+                                <ul class="safeguard-list">
+                                    <li><strong>Secret Ballot Guaranteed:</strong> Your name was verified at check-in,
+                                        but your marked ballot contains no identifying personal details.</li>
+                                    <li><strong>Paper Audit Trail:</strong> Your paper ballot sits inside a
+                                        double-locked, tamper-evident box for post-election audit checks.</li>
+                                    <li><strong>Air-Gapped Counting:</strong> Voting tabulators are completely
+                                        disconnected from the internet.</li>
+                                </ul>
+
+                                <button type="button" class="btn btn-primary mt-4" id="sim-reset-btn">🔄 Try Polling
+                                    Simulator Again</button>
+                            </div>
+
+                            <div class="sim-interactive-col">
+                                <div class="sim-receipt-card" id="sim-receipt-card">
+                                    <div class="receipt-header">
+                                        <h4>CIVIC DEMOCRACY RECEIPT</h4>
+                                        <span class="receipt-date">Practice Session Completed</span>
+                                    </div>
+                                    <div class="receipt-body" id="receipt-details">
+                                        <!-- Dynamically generated selection summary -->
+                                    </div>
+                                    <div class="receipt-footer">
+                                        <div class="barcode-placeholder">||||| | |||| ||| |||||| | |||||</div>
+                                        <p>Keep this receipt as a souvenir of practice!</p>
+                                        <button class="btn btn-sm btn-outline" id="print-receipt-btn">🖨️ Print / Save
+                                            Receipt</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: "My Voting Readiness Plan" Builder -->
+    <section class="section-padding plan-section" id="voting-plan-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Personal Voter Assistant</div>
+                <h2 class="section-title">My Voting Readiness Plan Builder</h2>
+                <p class="section-subtitle">
+                    Voters who create a plan are 80% more likely to vote successfully! Answer 4 quick questions to
+                    generate your custom action checklist, key deadlines, and required documentation.
+                </p>
+            </div>
+
+            <div class="plan-grid">
+                <!-- Form Inputs -->
+                <div class="plan-form-card glass-panel">
+                    <h3>1. Customize Your Plan</h3>
+                    <form id="voter-plan-form">
+                        <div class="form-group">
+                            <label for="voter-age">Are you eligible to vote by Election Day?</label>
+                            <select id="voter-age" class="form-control">
+                                <option value="eligible">Yes (18+ years old & Citizen)</option>
+                                <option value="future">Not yet (Pre-registering 16-17 yrs old)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="voter-reg-status">Current Registration Status:</label>
+                            <select id="voter-reg-status" class="form-control">
+                                <option value="registered">Registered at current address</option>
+                                <option value="moved">Moved recently / Need to update address</option>
+                                <option value="unsure">Unsure / Need to check status</option>
+                                <option value="never">First time registering</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="voter-method">Preferred Voting Method:</label>
+                            <select id="voter-method" class="form-control">
+                                <option value="in-person-day">In-Person on Election Day</option>
+                                <option value="early-person">Early Voting In-Person</option>
+                                <option value="mail">Mail-In / Absentee Ballot</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="voter-reminder-day">When will you cast your vote?</label>
+                            <input type="text" id="voter-reminder-day" class="form-control"
+                                placeholder="e.g., Tuesday Morning before work / Oct 25th">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="generate-plan-btn">
+                            ⚡ Generate My Custom Voting Plan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Generated Checklist Display -->
+                <div class="plan-output-card glass-panel" id="plan-output-card">
+                    <div class="plan-output-header">
+                        <div>
+                            <h3>Your Custom Voting Checklist</h3>
+                            <span class="plan-status-tag" id="plan-progress-tag">0 of 5 Completed</span>
+                        </div>
+                        <button class="btn btn-sm btn-outline" id="clear-plan-btn">Reset Plan</button>
+                    </div>
+
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-bar-fill" id="plan-progress-fill" style="width: 0%;"></div>
+                    </div>
+
+                    <div class="checklist-items" id="checklist-items-container">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <div class="plan-actions">
+                        <button class="btn btn-secondary btn-sm" id="export-plan-btn">📥 Export Plan
+                            (PDF/Print)</button>
+                        <span class="save-indicator">✓ Auto-saved to browser</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Electoral System & Mechanics Visualizer -->
+    <section class="section-padding mechanics-section" id="mechanics-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Interactive Mechanics</div>
+                <h2 class="section-title">Demystifying Electoral Systems</h2>
+                <p class="section-subtitle">
+                    How do individual votes turn into official election results? Explore the math behind the Electoral
+                    College, winner-take-all mechanics, and how votes are verified.
+                </p>
+            </div>
+
+            <!-- Tab Buttons for Mechanics -->
+            <div class="mechanics-tabs">
+                <button class="mech-tab-btn active" data-mech="electoral" id="mech-tab-electoral">Electoral College vs
+                    Popular Vote</button>
+                <button class="mech-tab-btn" data-mech="custody" id="mech-tab-custody">Ballot Security & Chain of
+                    Custody</button>
+                <button class="mech-tab-btn" data-mech="systems" id="mech-tab-systems">Presidential vs Parliamentary
+                    Systems</button>
+            </div>
+
+            <!-- Panel 1: Electoral College Simulator -->
+            <div class="mech-panel active glass-panel" id="mech-panel-electoral">
+                <div class="electoral-sim-grid">
+                    <div class="electoral-info">
+                        <h3>How the Electoral College Works</h3>
+                        <p>
+                            In US Presidential elections, citizens vote for a slate of electors pledged to their
+                            candidate. Each state gets a set number of electors based on its total Congressional
+                            representation (House Reps + 2 Senators).
+                        </p>
+                        <div class="electoral-math-card">
+                            <div class="math-item">
+                                <span class="math-val">538</span>
+                                <span class="math-lbl">Total Electoral Votes</span>
+                            </div>
+                            <div class="math-operator">+</div>
+                            <div class="math-item">
+                                <span class="math-val">270</span>
+                                <span class="math-lbl">Needed to Win Majority</span>
+                            </div>
+                        </div>
+                        <p class="small-text">
+                            <strong>Winner-Take-All Rule:</strong> In 48 states, whichever candidate gets the most
+                            popular votes wins 100% of that state's electors!
+                        </p>
+                    </div>
+
+                    <div class="electoral-interactive">
+                        <h4>Interactive Swing State Outcome Simulator</h4>
+                        <p class="hint-text">Adjust key state outcomes below to see how electoral votes shift toward the
+                            270 threshold:</p>
+
+                        <div class="state-sliders" id="state-sliders-container">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <div class="electoral-bar-wrapper mt-4">
+                            <div class="electoral-labels">
+                                <span class="cand-a-lbl">Candidate A: <strong id="cand-a-votes">210</strong> EV</span>
+                                <span class="target-lbl">270 to Win</span>
+                                <span class="cand-b-lbl">Candidate B: <strong id="cand-b-votes">328</strong> EV</span>
+                            </div>
+                            <div class="electoral-bar">
+                                <div class="cand-a-fill" id="cand-a-bar" style="width: 39%;"></div>
+                                <div class="threshold-line"></div>
+                                <div class="cand-b-fill" id="cand-b-bar" style="width: 61%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: Chain of Custody -->
+            <div class="mech-panel glass-panel" id="mech-panel-custody">
+                <h3>Ballot Chain of Custody & Verification Flow</h3>
+                <p>Every single vote undergoes rigorous bipartisan monitoring from the moment it is cast to the final
+                    audit.</p>
+
+                <div class="custody-flow-grid">
+                    <div class="custody-card">
+                        <div class="custody-step">1</div>
+                        <h4>Dual-Key Sealed Boxes</h4>
+                        <p>Ballots are collected in tamper-evident containers requiring keys from both major party
+                            election officials to open.</p>
+                    </div>
+                    <div class="custody-card">
+                        <div class="custody-step">2</div>
+                        <h4>Signature & ID Matching</h4>
+                        <p>For mail ballots, election workers compare the outer envelope signature against state voter
+                            registration databases.</p>
+                    </div>
+                    <div class="custody-card">
+                        <div class="custody-step">3</div>
+                        <h4>Offline Tabulation</h4>
+                        <p>Scanning machines operate on isolated local networks with zero internet connectivity,
+                            preventing remote hacking.</p>
+                    </div>
+                    <div class="custody-card">
+                        <div class="custody-step">4</div>
+                        <h4>Risk-Limiting Audits</h4>
+                        <p>Before results are certified, officials hand-count random samples of physical paper ballots
+                            to verify machine accuracy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 3: Presidential vs Parliamentary -->
+            <div class="mech-panel glass-panel" id="mech-panel-systems">
+                <h3>Global Election Systems Comparison</h3>
+                <p>Different democracies structure executive and legislative representation in distinct ways:</p>
+
+                <div class="systems-compare-table-wrapper">
+                    <table class="systems-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Presidential System (e.g., US, Brazil)</th>
+                                <th>Parliamentary System (e.g., UK, India, Canada)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Executive Head</strong></td>
+                                <td>President directly or electorally elected by voters independently of legislature.
+                                </td>
+                                <td>Prime Minister chosen by the majority party/coalition in the legislature.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Separation of Powers</strong></td>
+                                <td>Strict separation between executive cabinet and legislative congress.</td>
+                                <td>Executive ministers are active members of parliament.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ballot Style</strong></td>
+                                <td>Separate votes for Executive (President) and Representative (Congress/Senate).</td>
+                                <td>Voters choose local MP party candidate; winning party forms government.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Term Limits</strong></td>
+                                <td>Fixed terms (e.g., 4 years).</td>
+                                <td>Flexible terms subject to confidence votes or maximum 5-year windows.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 5: Myth vs. Fact Civic Quiz -->
+    <section class="section-padding quiz-section" id="quiz-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge badge-warning">Interactive Quiz</div>
+                <h2 class="section-title">Myth vs. Fact: Test Your Civic Knowledge</h2>
+                <p class="section-subtitle">
+                    There are many common misconceptions about how elections work. Take our quick 5-question interactive
+                    quiz to test your knowledge and earn your Civic Scholar Badge!
+                </p>
+            </div>
+
+            <div class="quiz-card glass-panel" id="quiz-card">
+                <div class="quiz-header">
+                    <div class="quiz-progress-text">Question <span id="quiz-curr-num">1</span> of 5</div>
+                    <div class="quiz-score-pill">Streak: 🔥 <span id="quiz-streak-num">0</span></div>
+                </div>
+
+                <div class="quiz-body" id="quiz-body">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div class="quiz-footer">
+                    <div class="quiz-explanation" id="quiz-explanation" style="display: none;">
+                        <!-- Explanation revealed after answer selection -->
+                    </div>
+                    <button class="btn btn-primary" id="quiz-next-btn" style="display: none;">Next Question
+                        &rarr;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Civic Knowledge Hub & Searchable Glossary -->
+    <section class="section-padding glossary-section" id="glossary-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Knowledge Hub</div>
+                <h2 class="section-title">Searchable Civic Glossary</h2>
+                <p class="section-subtitle">
+                    Understand the key terminology of elections, from <em>Absentee Ballot</em> to <em>Tabulation</em>.
+                    Toggle between List view and Flashcard mode.
+                </p>
+            </div>
+
+            <div class="glossary-controls">
+                <div class="search-input-wrapper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        class="search-icon">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="glossary-search" class="form-control search-field"
+                        placeholder="Search election terms (e.g., Primary, Gerrymander, Electoral)...">
+                </div>
+
+                <div class="filter-pills" id="glossary-category-pills">
+                    <button class="pill-btn active" data-cat="all">All Terms</button>
+                    <button class="pill-btn" data-cat="voting">Voting Rights & Procedures</button>
+                    <button class="pill-btn" data-cat="stages">Stages & Nominations</button>
+                    <button class="pill-btn" data-cat="mechanics">Counting & Security</button>
+                </div>
+
+                <div class="view-toggle">
+                    <button class="toggle-btn active" id="view-list-btn">List View</button>
+                    <button class="toggle-btn" id="view-cards-btn">🎴 Flashcard Mode</button>
+                </div>
+            </div>
+
+            <!-- Term Display Container -->
+            <div class="glossary-display-area" id="glossary-display-area">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: FAQ & Safeguards Accordion -->
+    <section class="section-padding faq-section" id="faq-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge">Helpful Answers</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Got questions about election day rules, voting rights, or ballot counting?
+                    Find quick answers below.</p>
+            </div>
+
+            <div class="faq-accordion-container" id="faq-accordion">
+                <div class="faq-item glass-panel">
+                    <button class="faq-question-btn">
+                        <span>What should I bring with me on Election Day?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer-content">
+                        <p>Depending on your state or jurisdiction, you may need a valid photo ID (such as a Driver's
+                            License, Passport, or State ID). Some areas accept non-photo IDs like utility bills or bank
+                            statements. Always verify your local election office rules in advance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question-btn">
+                        <span>What happens if I am standing in line when the polls close?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer-content">
+                        <p><strong>Under election law:</strong> If you are in line at your designated polling location
+                            before the official closing time, you have the legal right to stay in line and cast your
+                            ballot!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question-btn">
+                        <span>How are mail-in ballots verified for security?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer-content">
+                        <p>Mail-in ballots use a double-envelope privacy system. The outer envelope is signed by the
+                            voter. Election clerks verify the signature against the voter's official record using
+                            software or bipartisan review teams before opening the inner secrecy sleeve.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question-btn">
+                        <span>What is a Provisional Ballot and when is it used?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer-content">
+                        <p>A Provisional Ballot is used when a voter’s eligibility cannot be immediately confirmed at
+                            the polling place (e.g., name missing from roster, ID missing, or address update pending).
+                            The vote is safely held and counted after election officials verify voter eligibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Search Modal -->
+    <div class="search-modal-backdrop" id="search-modal" style="display: none;">
+        <div class="search-modal-card glass-panel">
+            <div class="modal-search-header">
+                <input type="text" id="global-search-input"
+                    placeholder="Search election stages, terms, or guide topics..." autofocus>
+                <button class="close-modal-btn" id="close-search-btn">&times;</button>
+            </div>
+            <div class="modal-search-results" id="global-search-results">
+                <div class="search-placeholder-text">Type a key term like "Registration", "Ballot", "Electoral", or
+                    "Audit"...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <div class="logo-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="m9 12 2 2 4-4"></path>
+                            <path d="M5 7 3 9l9 9 9-9-2-2"></path>
+                        </svg>
+                    </div>
+                    <span class="brand-name">Electi<span class="highlight">Sphere</span></span>
+                </div>
+                <p>An interactive non-partisan educational tool designed to demystify election stages, voting
+                    procedures, and civic participation worldwide.</p>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-col">
+                    <h5>Navigation</h5>
+                    <ul>
+                        <li><a href="#lifecycle-section">6 Election Stages</a></li>
+                        <li><a href="#votesim-section">VoteSim Studio</a></li>
+                        <li><a href="#voting-plan-section">Voting Readiness Plan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Civic Learning</h5>
+                    <ul>
+                        <li><a href="#mechanics-section">Electoral College Math</a></li>
+                        <li><a href="#quiz-section">Myth vs Fact Quiz</a></li>
+                        <li><a href="#glossary-section">Civic Glossary</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container copyright-bar">
+                <span>&copy; 2026 ElectiSphere Civic Project. Non-partisan educational platform.</span>
+                <span>Built for accessibility & public awareness.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
